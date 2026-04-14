@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender Distribution Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js CDN -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        canvas {
+            max-width: 100%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Gender Distribution Chart</h1>
+    </header>
+
+    <div class="container">
+        <h2>Registered Users Gender Statistics</h2>
+
+        <!-- Gender Chart -->
+        <canvas id="genderChart"></canvas>
+
+        <div>
+            <a href="thank-you.html" class="btn">Back to Thank You Page</a>
+            <a href="results.html" class="btn">View Results</a>
+            <a href="home.html" class="btn">Return to Home</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 E-Voting Application</p>
+    </footer>
+
+    <script>
+        // Function to fetch gender data from localStorage and prepare the chart
+        function createGenderChart() {
+            // Retrieve registered users from localStorage
+            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+            // Initialize counters for male, female, and other genders
+            let maleCount = 0;
+            let femaleCount = 0;
+            let otherCount = 0;
+
+            // Loop through registered users and count genders
+            registeredUsers.forEach(user => {
+                if (user.gender === 'male') {
+                    maleCount++;
+                } else if (user.gender === 'female') {
+                    femaleCount++;
+                } else {
+                    otherCount++;
+                }
+            });
+
+            // Set up the chart data
+            const genderData = {
+                labels: ['Male', 'Female', 'Other'],
+                datasets: [{
+                    label: 'Number of Users',
+                    data: [maleCount, femaleCount, otherCount],
+                    backgroundColor: ['#3e95cd', '#8e5ea2', '#3cba9f'],
+                    borderColor: ['#3e95cd', '#8e5ea2', '#3cba9f'],
+                    borderWidth: 1
+                }]
+            };
+
+            // Set up chart options
+            const genderOptions = {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            };
+
+            // Create the chart
+            const ctx = document.getElementById('genderChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: genderData,
+                options: genderOptions
+            });
+        }
+
+        // Call the function to create the chart on page load
+        window.onload = createGenderChart;
+    </script>
+
+</body>
+</html>

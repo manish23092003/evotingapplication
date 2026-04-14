@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Registration Successful</h1>
+    </header>
+
+    <div class="container">
+        <h2>Your Party Has Been Successfully Registered!</h2>
+        <p><strong>Party Name:</strong> <span id="partyNameDisplay"></span></p>
+        <p><strong>Party Leader:</strong> <span id="partyLeaderDisplay"></span></p>
+        <p><strong>Party Symbol:</strong> <span id="partySymbolDisplay"></span></p>
+        <p><strong>Party Description:</strong> <span id="partyDescriptionDisplay"></span></p>
+
+        <button class="button" onclick="window.location.href = 'home.html'">home</button>
+    </div>
+
+    <script>
+        // Retrieve the party details from localStorage and display them on the confirmation page
+        window.onload = function() {
+            const registeredParty = JSON.parse(localStorage.getItem('registeredParty'));
+
+            if (registeredParty) {
+                document.getElementById('partyNameDisplay').textContent = registeredParty.name;
+                document.getElementById('partyLeaderDisplay').textContent = registeredParty.leader;
+                document.getElementById('partySymbolDisplay').textContent = registeredParty.symbol;
+                document.getElementById('partyDescriptionDisplay').textContent = registeredParty.description;
+            }
+        };
+    </script>
+
+</body>
+</html>

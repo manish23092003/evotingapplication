@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Provide Your Feedback</h1>
+    </header>
+
+    <div class="container">
+        <h2>We value your opinion!</h2>
+        <p>Please share your feedback with us. It will help us improve the voting experience.</p>
+
+        <!-- Feedback Form -->
+        <form id="feedbackForm" onsubmit="handleFeedback(event)">
+            <textarea id="feedbackText" name="feedback" placeholder="Enter your feedback here..." required></textarea>
+            <br>
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+
+        <script>
+            function handleFeedback(event) {
+                event.preventDefault();
+                const feedbackText = document.getElementById('feedbackText').value;
+                
+                // Save feedback to localStorage
+                const feedbackList = JSON.parse(localStorage.getItem('userFeedback')) || [];
+                feedbackList.push({
+                    text: feedbackText,
+                    timestamp: new Date().toLocaleString()
+                });
+                localStorage.setItem('userFeedback', JSON.stringify(feedbackList));
+                
+                alert("Thank you for your feedback!");
+                window.location.href = "home.html";
+            }
+        </script>
+
+        <!-- Return to home page -->
+        <a href="home.html" class="btn">Back to Home</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 E-Voting Application</p>
+    </footer>
+
+</body>
+</html>

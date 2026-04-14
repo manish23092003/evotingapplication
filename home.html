@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - E-Voting System</title>
+    <style>
+        /* Basic reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Background settings */
+        body {
+            background-image: url('indian-flag-design-made-with-in-wave-style-vector-4593321.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            color: white;
+        }
+
+        /* Navigation styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 70px;
+            height: 70px;
+            cursor: pointer; /* Makes the image clickable */
+        }
+
+        .logo div {
+            font-weight: 700;
+            font-size: 30px;
+            border: 5px solid black;
+            border-radius: 20px;
+            padding: 10px;
+            color: white;
+        }
+
+        /* Right side menu styles */
+        .right ul {
+            display: flex;
+            gap: 34px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .right ul li {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .right ul li a {
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .right ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .right ul li img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Hamburger menu (for small screens) */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger-menu div {
+            width: 30px;
+            height: 5px;
+            background-color: white;
+        }
+
+        /* Dropdown menu */
+        .menu-dropdown {
+            display: none;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            position: absolute;
+            top: 100px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .menu-dropdown a {
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-dropdown a:hover {
+            background-color: #4CAF50;
+        }
+
+        /* Add toll-free number styling */
+        .toll-free-number {
+            color: white;
+            font-size: 16px;
+            margin-left: 20px;
+        }
+
+        /* Updated notification panel - now bigger */
+        .notification-panel {
+            position: fixed;
+            top: 150px;
+            right: 10px;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 997;
+            animation: float 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .notification-panel h2 {
+            margin-top: 0;
+            font-size: 20px; /* Increased font size */
+            font-weight: bold;
+        }
+
+        .notification {
+            background-color: #4CAF50;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .notification:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .moving-text {
+            display: inline-block;
+            white-space: nowrap;
+            font-size: 30px;
+            font-weight: bold;
+            animation: moveText 20s linear infinite;
+        }
+
+        @keyframes moveText {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .right {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <!-- Wrap the logo image with an anchor tag for the redirect -->
+                <a href="home.html">
+                    <img src="unnamed.png" alt="E-Voting Logo">
+                </a>
+                <div>Welcome For E-Voting</div>
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="home.html"><span>Home</span></a></li>
+                    <li><a href="register.html"><span>Register</span></a></li>
+                    <li><a href="login.html"><span>Vote</span></a></li>
+                    <li><a href="results.html"><span>Results</span></a></li>
+                    <li><a href="support.html"><span>Support</span></a></li>
+                    <li><a href="https://www.eci.gov.in/"><span>About us</span></a></li>
+                    <li><span>Toll-free: <strong>1800-123-4567</strong></span></li>
+                </ul>
+            </div>
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Dropdown menu -->
+    <div class="menu-dropdown" id="menuDropdown">
+        <a href="home.html">Home</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Vote</a>
+        <a href="results.html">Results</a>
+        <a href="support.html">Support</a>
+        <a href="https://www.eci.gov.in/">About us</a>
+    </div>
+
+    <!-- Notification Panel (Positioned on the Right) -->
+    <div class="notification-panel" id="notificationPanel">
+        <h2>Election Updates</h2>
+        <div class="notification">
+            <strong>Election Registration Deadline:</strong> The last date for voter registration is approaching. Ensure you are registered before 12-12-2024.
+        </div>
+        <div class="notification">
+            <strong>Voting Begins Soon:</strong> Voting for this year's election starts on 25-01-2025. Make sure to cast your vote!
+        </div>
+        <div class="notification">
+            <strong>Election Results:</strong> Results will be announced on 08-03-2025. Stay tuned for updates!
+        </div>
+        <div class="notification">
+            <strong>Voter ID Update:</strong> Don't forget to update your voter ID details before 08-12-2024 for smoother voting.
+        </div>
+    </div>
+
+    <footer>
+        <div class="moving-text">
+            It's not enough to just want change... You have to make a change by voting.
+        </div>
+    </footer>
+
+    <script>
+        // Toggle the dropdown menu visibility
+        function toggleMenu() {
+            const menuDropdown = document.getElementById('menuDropdown');
+            menuDropdown.style.display = menuDropdown.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
+</body>
+</html>

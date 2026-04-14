@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Header section styling */
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Container for the login form */
+        .container {
+            width: 50%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        /* Heading for the form */
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Form styling with spacing between inputs */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Input field styling */
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Submit button styling */
+        input[type="submit"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Hover effect for submit button */
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Styling for the error message */
+        .message, .error {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 15px;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Language selector dropdown styling */
+        #languageSelect {
+            margin-top: 20px;
+            font-size: 16px;
+            width: 100%;
+            padding: 10px;
+        }
+
+        /* Focus styling for input fields to enhance accessibility */
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        /* Media query for responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;  /* Make form container wider on mobile */
+            }
+        }
+
+        /* Logo styling */
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 80px;  /* Set the width of the logo */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header section with title and logo -->
+    <header>
+        <div class="logo">
+            <a href="home.html">
+                <img src="unnamed.png" alt="E-Voting Logo">
+            </a>
+        </div>
+        <h1 id="headerTitle">E-Voting System - Login</h1>
+    </header>
+
+    <!-- Main content container for the login form -->
+    <div class="container">
+        <h2 id="formTitle">Login</h2>
+
+        <!-- Language selector dropdown -->
+        <select id="languageSelect" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="hi">Hindi</option>
+            <option value="kn">Kannada</option>
+        </select>
+
+        <!-- Login form with username and password fields -->
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <label for="username" id="usernameLabel">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="password" id="passwordLabel">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <!-- Submit button -->
+            <input type="submit" value="Login" id="submitButton">
+        </form>
+
+        <!-- Error message display area -->
+        <div id="errorMessage" class="error"></div>
+
+        <!-- Registration link for new users -->
+        <div class="message" id="registerLink">
+            New user? <a href="register.html">Register here</a>.
+        </div>
+    </div>
+
+    <!-- Footer section -->
+    <footer>
+        <p>&copy; 2024 E-Voting Application</p>
+    </footer>
+
+    <script>
+        // Translation data for different languages
+        const translations = {
+            en: {
+                headerTitle: "E-Voting System - Login",
+                formTitle: "Login",
+                usernameLabel: "Username:",
+                passwordLabel: "Password:",
+                submitButton: "Login",
+                errorMessage: "User not registered. Please register first.",
+                registerLink: 'New user? <a href="register.html">Register here</a>.' // English version of registration link
+            },
+            es: {
+                headerTitle: "Sistema de E-Votación - Iniciar sesión",
+                formTitle: "Iniciar sesión",
+                usernameLabel: "Nombre de usuario:",
+                passwordLabel: "Contraseña:",
+                submitButton: "Iniciar sesión",
+                errorMessage: "Usuario no registrado. Por favor, regístrese primero.",
+                registerLink: '¿Nuevo usuario? <a href="register.html">Regístrate aquí</a>.' // Spanish version
+            },
+            hi: {
+                headerTitle: "ई-मतदान प्रणाली - लॉगिन",
+                formTitle: "लॉगिन",
+                usernameLabel: "उपयोगकर्ता नाम:",
+                passwordLabel: "पासवर्ड:",
+                submitButton: "लॉगिन",
+                errorMessage: "उपयोगकर्ता पंजीकृत नहीं है। कृपया पहले पंजीकरण करें।",
+                registerLink: 'नया उपयोगकर्ता? <a href="register.html">यहां पंजीकरण करें</a>.' // Hindi version
+            },
+            kn: {
+                headerTitle: "ಇ-ಮತದಾನ ವ್ಯವಸ್ಥೆ - ಲಾಗಿನ್",
+                formTitle: "ಲಾಗಿನ್",
+                usernameLabel: "ಬಳಕೆದಾರರ ಹೆಸರು:",
+                passwordLabel: "ಪಾಸ್ವರ್ಡ್:",
+                submitButton: "ಲಾಗಿನ್",
+                errorMessage: "ಬಳಕೆದಾರ ನೋಂದಾಯಿಸಲಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ಮೊದಲು ನೋಂದಣಿ ಮಾಡಿ.",
+                registerLink: 'ಹೊಸ ಬಳಕೆದಾರ? <a href="register.html">ಇಲ್ಲಿ ನೋಂದಣಿ ಮಾಡಿ</a>.' // Kannada version
+            }
+        };
+
+        // Change language function to update content based on selected language
+        function changeLanguage() {
+            const selectedLanguage = document.getElementById('languageSelect').value;
+            const langData = translations[selectedLanguage];
+
+            // Update page content based on selected language
+            document.getElementById('headerTitle').textContent = langData.headerTitle;
+            document.getElementById('formTitle').textContent = langData.formTitle;
+            document.getElementById('usernameLabel').textContent = langData.usernameLabel;
+            document.getElementById('passwordLabel').textContent = langData.passwordLabel;
+            document.getElementById('submitButton').value = langData.submitButton;
+            document.getElementById('registerLink').innerHTML = langData.registerLink;
+        }
+
+        // Handle login form submission
+        function handleLogin(event) {
+            event.preventDefault();  // Prevent form submission and page reload
+
+            // Get username and password from form inputs
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Fetch registered users from local storage
+            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+            const user = registeredUsers.find(user => user.username === username && user.password === password);
+
+            // If user is found, redirect to the voting page
+            if (user) {
+                window.location.href = "voting.html";  // Redirect to voting page
+            } else {
+                // Show error message if login fails
+                const selectedLanguage = document.getElementById('languageSelect').value;
+                document.getElementById('errorMessage').innerText = translations[selectedLanguage].errorMessage;
+            }
+        }
+
+        // Clear the error message when user starts typing again
+        document.getElementById('username').addEventListener('input', clearError);
+        document.getElementById('password').addEventListener('input', clearError);
+
+        // Function to clear the error message
+        function clearError() {
+            document.getElementById('errorMessage').innerText = '';
+        }
+
+        // Initialize the page with the default language on load
+        window.onload = changeLanguage;
+    </script>
+</body>
+</html>
