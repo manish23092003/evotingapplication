@@ -44,6 +44,3 @@ To run this application, you only need a modern web browser (Google Chrome, Fire
 
 ## ⚖️ License
 This project is for educational/demonstration purposes.
-
----
-*Created by Manish - "It's not enough to just want change... You have to make a change by voting."*
